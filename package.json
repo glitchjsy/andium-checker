@@ -1,0 +1,28 @@
+{
+  "name": "andium-checker",
+  "version": "1.0.0",
+  "description": "Checks the Andium Homes website for new properties",
+  "author": "Luke Wyatt <luke@glitch.je>",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/glitchjsy/andium-checker.git"
+  },
+  "keywords": [
+    "scraper"
+  ],
+  "bugs": {
+    "url": "https://github.com/glitchjsy/andium-checker/issues"
+  },
+  "homepage": "https://github.com/glitchjsy/andium-checker#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "mailersend": "^2.2.0",
+    "node-cron": "^3.0.3",
+    "node-fetch": "^2.7.0"
+  }
+}
