@@ -2,6 +2,9 @@
 A simple program that checks the Andium Homes [homes to rent](https://www.andiumhomes.je/findahome/propertylettings/) page for updates, then sends an email summary.
 
 ## Getting Started
+> **PLEASE NOTE**<br>
+> The MailerSend free tier seems to only allow 2 recipients
+
 1. Make sure Node.js and Git are installed
 2. Clone the repo `git clone https://github.com/glitchjsy/andium-checker`
 3. Run `cd andium-checker && npm install`
@@ -16,8 +19,8 @@ A simple program that checks the Andium Homes [homes to rent](https://www.andium
     },
     "email": {
         "from": {
-            "email": "andium-notifications@glitch.je",
-            "name": "Luke's Andium Notifications"
+            "email": "andium@@trial-6zxk52vyw6z4jy6v.mlsender.net",
+            "name": "Andium Notifications"
         },
         "recipients": [
             {
@@ -25,7 +28,7 @@ A simple program that checks the Andium Homes [homes to rent](https://www.andium
                 "name": "Luke"
             }
         ],
-        "subject": "Luke's Andium Checker",
+        "subject": "Andium Checker",
         "apiKey": "mailersend api key"
     }
 }

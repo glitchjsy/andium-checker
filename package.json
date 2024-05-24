@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/glitchjsy/andium-checker#readme",
   "dependencies": {
+    "chalk": "4.0.0",
     "cheerio": "^1.0.0-rc.12",
     "mailersend": "^2.2.0",
     "node-cron": "^3.0.3",
