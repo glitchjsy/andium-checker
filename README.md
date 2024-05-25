@@ -33,3 +33,19 @@ A simple program that checks the Andium Homes [homes to rent](https://www.andium
     }
 }
 ```
+
+## Example Email
+```
+----------------
+New Properties: --
+Name: 3A Victoria Cottage Homes – Over 55’s
+Address: Victoria Cottage Homes, St Saviour's Hill, JE2 7TS, St. Saviour
+Price: £910.00
+
+----------------
+Removed Properties:
+--
+Name: 3A Victoria Cottage Homes
+Address: Victoria Cottage Homes, St Saviour's Hill, JE2 7TS, St. Saviour
+Price: £910.00
+```
