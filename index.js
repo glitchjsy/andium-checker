@@ -2,11 +2,17 @@ const fetch = require("node-fetch");
 const cron = require("node-cron");
 const cheerio = require("cheerio");
 const chalk = require("chalk");
-const { MailerSend, EmailParams, Sender, Recipient } = require("mailersend");
+const nodemailer = require("nodemailer");
 const config = require("./config.json");
 
-const mailerSend = new MailerSend({
-    apiKey: config.email.apiKey
+const transporter = nodemailer.createTransport({
+    host: 'live.smtp.mailtrap.io',
+    port: 587,
+    secure: false,
+    auth: {
+        user: config.email.user,
+        pass: config.email.pass,
+    }
 });
 
 const url = "https://www.andiumhomes.je/findahome/propertylettings/";
@@ -90,35 +96,20 @@ async function checkProperties() {
  * @param {String} html The html content of the email
  */
 async function sendUpdate(html) {
-    const sentFrom = new Sender(config.email.from.email, config.email.from.name);
-    const recipients = config.email.recipients.map(recipient => new Recipient(recipient.email, recipient.name));
+    const mailOptions = {
+        from: config.email.from,
+        to: config.email.recipients,
+        subject: `${config.email.subject} (${generateRandomString(6)})`,
+        html
+    };
 
-    const emailParams = new EmailParams()
-        .setFrom(sentFrom)
-        .setTo([recipients[0]])
-        .setReplyTo(sentFrom)
-        // Generate a random string so the emails dont get grouped together
-        .setSubject(`${config.email.subject} (${generateRandomString(6)})`)
-        .setHtml(html);
-
-    // Mailersend free tier only lets you sent an email to one recipient, so we use this
-    // workaround to send it to multiple
-    if (recipients.length > 1) {
-        recipients.shift();
-        emailParams.setCc(recipients);
-    }
-
-    try {
-        await mailerSend.email.send(emailParams);
-    } catch (e) {
-        console.error(chalk.red("Failed to send update"), e);
-        return;
-    }
-
-    const now = new Date();
-    const nowString = `${now.getDay()}/${now.getMonth()}/${now.getFullYear()} at ${now.getHours()}:${now.getMinutes()}`;
-
-    console.log(chalk.green(`Email sent: ${nowString}`));
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.error(chalk.red("Failed to send update"), e);
+        } else {
+            console.log(chalk.green('Email sent:', info.response));
+        }
+    });
 }
 
 /**
