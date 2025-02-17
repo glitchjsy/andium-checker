@@ -1,4 +1,5 @@
 # Andium Properties Checker
+[![Hits](https://hitcount.dev/p/glitchjsy/andium-checker.svg)](https://hitcount.dev/p/glitchjsy/andium-checker)  
 A simple program that checks the Andium Homes [homes to rent](https://www.andiumhomes.je/findahome/propertylettings/) page for updates, then sends an email summary.
 
 ## Getting Started
